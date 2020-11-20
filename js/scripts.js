@@ -37,27 +37,5 @@ jQuery(function(){
       }
   });
 
-  // 追従ヘッダ
-  var main = jQuery('.main_wrap');
-  var offsetTop = main.offset().top;
-  var nav = jQuery('header nav');
-  var fixedMenu = function(){
-    if ( jQuery(window).scrollTop() > offsetTop ) {
-      nav.addClass('header_fixed');
-  
-    } else {
-      nav.removeClass('header_fixed');
-    }
-  }
-  jQuery(window).scroll(fixedMenu);
-  jQuery('body').bind('touchmove' , fixedMenu);
-
-
-  // パララックス
-  var para_box_top = jQuery('.para_box').offset().top;
-  jQuery(window).scroll(function(){
-    var scrollval = jQuery(this).scrollTop();
-    jQuery('.para_box').css('top' , para_box_top + scrollval / 50);
-  });
 });
 
