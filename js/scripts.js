@@ -37,5 +37,33 @@ jQuery(function(){
       }
   });
 
+  // codeにクラス追加
+  jQuery('code').addClass('prettyprint linenums');
+
 });
 
+
+// slick
+jQuery(function() {
+    jQuery('.slider').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    dots:true,
+ 
+      //レスポンシブでの動作を指定
+      responsive: [{
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          centerMode: true,
+        }
+      },{
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          centerMode: false,
+        }
+      }]
+    });
+});

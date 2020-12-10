@@ -10,13 +10,12 @@
 
           <article <?php post_class();?>>
             <a href="<?php the_permalink();?>">
-
               <div class="thumnail">
                 <figure>
                 <?php if(has_post_thumbnail() ):?>
                     <?php the_post_thumbnail(); ?>
                 <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/thumnail/<?php echo get_thumnail_no(get_the_date('s')); ?>.jpg" alt="">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/thumnail/<?php echo get_thumnail_no(get_the_date('i')); ?>.jpg" alt="">
                 <?php endif; ?>
                 </figure>
               </div>

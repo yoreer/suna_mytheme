@@ -53,6 +53,11 @@ function mytheme_enqueue(){
   // テーマのCSS
   wp_enqueue_style('mytheme-style', get_stylesheet_uri(), array(),
   filemtime(get_template_directory() . '/style.css'));
+
+  // slick
+  wp_enqueue_style('mytheme-slick',get_template_directory_uri() . '/slick/slick.css', array(), null);
+  wp_enqueue_style('mytheme-slick-theme',get_template_directory_uri() . '/slick/slick-theme.css', array(), null);
+
 }
 add_action('wp_enqueue_scripts' , 'mytheme_enqueue');
 
@@ -78,6 +83,15 @@ function register_my_scripts() {
     filemtime( get_template_directory() . '/js/scripts.js'),
     TRUE
     );
+
+  // slick
+  wp_enqueue_script(
+    'slick-scripts',
+    get_template_directory_uri() . '/slick/slick.min.js',
+    array( 'jquery' ),
+    '1.8.1',
+    TRUE
+    );
   }
 add_action('wp_enqueue_scripts', 'register_my_scripts');
 
@@ -89,17 +103,8 @@ function twpp_change_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'twpp_change_excerpt_length', 999 );
 
 //その他
-function count_category($cat_id){
-  $thisCat = get_category( $cat_id );
-  return $thisCat->count;
-}
-
-function get_thumnail_no($seconds){
-  $tmp = mb_substr($seconds,1,1);
-  if($tmp > 5){
-    $tmp -= 6;
-  }
-  return $tmp;
+function get_thumnail_no($min){
+  return mb_substr($min,1,1);
 }
 
 function get_header_navlink($str){
@@ -108,4 +113,8 @@ function get_header_navlink($str){
   } else{
     return '/#' . $str;
   }
+}
+function cnt_post_by_categorie($slugname){
+  $term = get_term_by('slug', $slugname, 'category');
+  echo $term->count;
 }

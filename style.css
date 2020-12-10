@@ -41,6 +41,10 @@ body{
               ,sans-serif;
   
 }
+* {
+  box-sizing: border-box;
+}
+
 a{
   text-decoration:none;
   color:rgb(7, 7, 7);
@@ -58,6 +62,7 @@ a:hover{
   grid-template-rows:
     [head] 120px
     [main] auto
+    [portfolio] auto
     [aside] auto
     [foot] 100px
     ;
@@ -69,6 +74,9 @@ header{
 }
 main{
   grid-row:main;
+}
+#portfolio{
+  grid-row:portfolio;
 }
 aside {
   grid-row:aside;
@@ -116,6 +124,7 @@ header nav a p{
 main {
   background: linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.9) ),url(./img/bg_border.jpg);  /* 背景画像指定 */
   background-repeat: repeat;
+  padding-bottom: 100px;
 }
 main section{
   height:100vh;
@@ -293,6 +302,7 @@ footer h5{
   font-size:5rem;
   right: 10px;
   bottom: 10px;
+  z-index: 10;
 }
 .to_top .icon{
   color:rgba(245, 232, 48, 0.8);
@@ -530,4 +540,55 @@ footer h5{
 }
 .archive .nav-links{
   letter-spacing: 5px;
+}
+
+
+/*=====================*/
+.wp-block-code{
+  background-color:#333;
+  width:70%;
+}
+.prettyprint ol.linenums > li {
+	list-style-type: decimal; 
+}
+
+
+/*=====================*/
+#portfolio{
+  background: var(--main-color);
+}
+
+#portfolio .container{
+  margin:auto;
+  width:1000px;
+  height:300px;
+}
+#portfolio img{
+  width:250px;
+  height:auto;
+}
+#portfolio  .slick-prev:before,
+#portfolio  .slick-next:before {
+  color: black;
+}
+#portfolio .slider{
+  margin: 0 auto;
+}
+@media (max-width:1000px){ 
+  #portfolio .container{
+    width:700px;
+  }
+  #portfolio img{
+    width:250px;
+    height:auto;
+  }
+}
+@media (max-width:600px){ 
+  #portfolio .container{
+    width:250px;
+  }
+  #portfolio img{
+    width:250px;
+    height:auto;
+  }
 }

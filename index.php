@@ -65,87 +65,76 @@
               <thead>
                 <tr>
                   <th>言語</th>
-                  <th></th>
                   <th>実務経験</th>
                   <th>メモ</th>
                 </tr>
               </thead>
                 <tr>
                   <td>C</td>
-                  <td>★☆☆</td>
                   <td>半年</td>
                   <td>
                     <a href="/category/programming/c/">
                       <i class="fas fa-pencil-alt"></i></i>
-                      <!-- <?php echo count(get_categories( array('include' => '13') )); ?> -->
-                      <?php echo count_category(13); ?>
+                      <?php echo cnt_post_by_categorie( 'c' ); ?>
                   </a>
                   </td>
                 </tr>
                 <tr>
                   <td>java</td>
-                  <td>★★☆</td>
                   <td>5年</td>
                   <td>
                     <a href="/category/programming/java/">
                       <i class="fas fa-pencil-alt"></i></i>
-                      <?php echo count(get_categories( array('include' => '14') )); ?>
+                      <?php echo cnt_post_by_categorie( 'java' ); ?>
                     </a>
                   </td>
                 </tr>
                 <tr>
                   <td>sql</td>
-                  <td>★★☆</td>
                   <td>5年</td>
                   <td><a href="/category/programming/sql/">
                       <i class="fas fa-pencil-alt"></i></i>
-                      <?php echo count(get_categories( array('include' => '16') )); ?>
+                      <?php echo cnt_post_by_categorie( 'sql' ); ?>
                   </a></td>
                 </tr>
                 <tr>
                   <td>html/css</td>
-                  <td>★☆☆</td>
                   <td>1年</td>
-                  <td><a href="/category/programming/css/">
+                  <td><a href="/category/programming/html-css/">
                     <i class="fas fa-pencil-alt"></i></i>
-                    <!-- <?php echo count(get_categories( array('include' => '12') )); ?> -->
-                    <?php echo count_category(12); ?>
+                      <?php echo cnt_post_by_categorie( 'html-css' ); ?>
                   </a></td>
                 </tr>
                 <tr>
                   <td>javascript</td>
-                  <td>★☆☆</td>
                   <td>1年</td>
-                  <td><a href="/category/programming/js/">
+                  <td><a href="/category/programming/javascript-jquery/">
                     <i class="fas fa-pencil-alt"></i></i>
-                    <?php echo count(get_categories( array('include' => '15') )); ?>
+                      <?php echo cnt_post_by_categorie( 'javascript-jquery' ); ?>
                   </a></td>
                 </tr>
                 <tr>
                   <td>php</td>
-                  <td>★☆☆</td>
                   <td>なし</td>
                   <td><a href="/category/programming/php/">
                     <i class="fas fa-pencil-alt"></i></i>
-                    <?php echo count(get_categories( array('include' => '17') )); ?>
+                      <?php echo cnt_post_by_categorie( 'php' ); ?>
                   </a></td>
                 </tr>
                 <tr>
                   <td>wordpress</td>
-                  <td>★☆☆</td>
                   <td>なし</td>
-                  <td><a href="/category/programming/wp/">
+                  <td><a href="/category/programming/wordpress/">
                     <i class="fas fa-pencil-alt"></i></i>
-                    <?php echo count(get_categories( array('include' => '18') )); ?>
+                      <?php echo cnt_post_by_categorie( 'wordpress' ); ?>
                   </a></td>
                 </tr>
                 <tr>
                   <td>photoshop</td>
-                  <td>★☆☆</td>
                   <td>なし</td>
-                  <td><a href="/category/programming/ps/">
+                  <td><a href="/category/programming/photoshop/">
                     <i class="fas fa-pencil-alt"></i></i>
-                    <?php echo count(get_categories( array('include' => '19') )); ?>
+                      <?php echo cnt_post_by_categorie( 'photoshop' ); ?>
                   </a></td>
                 </tr>
                 </thead>
@@ -161,10 +150,30 @@
 
           </div>
         </section>
+
       </div>
     </main>
 
 
+    <section id="portfolio">
+      <div class="container">
+        <h2>PORTFOLIO</h2>
+        <div class="slider">
+
+<?php
+  $arg = array( 
+  'category' => 34,
+  'posts_per_page' => 5 //表示記事件数
+  );
+  $posts = get_posts($arg);
+?>
+<?php if($posts): foreach($posts as $post): setup_postdata($post); ?>
+          <div><a href="<?php the_permalink() ?>"><?php the_post_thumbnail(); ?></a></div>
+<?php endforeach; endif; ?>
+
+        </div>
+      </div>
+    </section>
 
 <?php get_sidebar();?>
 <?php get_footer();?>
